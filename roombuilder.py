@@ -1,4 +1,5 @@
 import numpy as np
+import equations as eq
 
 class roomBuidler:
     #Roygbiv
@@ -21,11 +22,10 @@ class roomBuidler:
         self.wavelengths = []
         k=0
         while k<3:
-            print("k loop initialized")
             match self.roomColorPos[k]:
                 #red
                 case 0:
-                    self.wavelengths.append(np.random.randint(620,750))
+                    self.wavelengths.append(np.random.randint(620,700))
                 #orange
                 case 1:
                     self.wavelengths.append(np.random.randint(580,619))
@@ -35,19 +35,24 @@ class roomBuidler:
                 #green
                 case 3:
                     self.wavelengths.append(np.random.randint(495,569))
+                #blue
                 case 4:
                     self.wavelengths.append(np.random.randint(450,494))
+                #indigo
                 case 5:
-                    self.wavelengths.append(np.random.randint(620,750))
+                    self.wavelengths.append(np.random.randint(425,449))
+                #violet
                 case 6:
-                    self.wavelengths.append(np.random.randint(620,750))
+                    self.wavelengths.append(np.random.randint(400,424))
             k+=1
+
+        self.angularResolution = np.round(eq.angularResolution(np.random.randint(10,20),self.wavelengths[0])*100,1)
+        
 
         self.cbroomColorRGB = []
         match self.type:
             #Protanopia
             case 0:
-                print("Type0 match activated")
                 pRed = (128,128,0)
                 pOrange = (191,128,0)
                 pYellow = (255,255,0)
@@ -61,10 +66,8 @@ class roomBuidler:
                 while j<3:
                     self.cbroomColorRGB.append(pRGB[self.roomColorPos[j]])
                     j+=1
-                return
             #Deuteranopes
             case 1:
-                print("Type1 match activated")
                 dRed = (255,102,102)
                 dOrange = (255,178,102)
                 dYellow = (255,255,102)
@@ -78,10 +81,8 @@ class roomBuidler:
                 while j<3:
                     self.cbroomColorRGB.append(dRGB[self.roomColorPos[j]])
                     j+=1
-                return
             #Tritanopes
-            case 2:
-                print("Type2 match activated")
+            case 2: 
                 tRed = (255,0,0)
                 tOrange = (255,128,0)
                 tYellow = (255,191,128)
@@ -95,5 +96,4 @@ class roomBuidler:
                 while j<3:
                     self.cbroomColorRGB.append(tRGB[self.roomColorPos[j]])
                     j+=1
-                return
-        
+        print('The chosen type: ',self.type,', The RGB values chosen: ',self.roomColorRGB,', The wavelengths generated: ',self.wavelengths,", the color perceived: ",self.cbroomColorRGB ,', The angular resolution required for room 1: ', self.angularResolution,"*10^-11") 
