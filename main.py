@@ -102,7 +102,8 @@ while True:
     lensLight.draw(DISPLAYSURF)
     lensLight.update()
     if lens.shown==1:
-        DISPLAYSURF.blit(SETTEXT(str(lensLight.blur_amount), WHITE), (600, 830))
+        DISPLAYSURF.blit(SETTEXT(str(lensLight.blur_amount), WHITE), (SCREEN_WIDTH/2, SCREEN_HEIGHT-80))
+        DISPLAYSURF.blit(LENSINSTRUCTIONS, LENSINSTRUCTIONSRECT)
 
 
     pygame.display.update()
