@@ -1,5 +1,6 @@
 import numpy as np
 import equations as eq
+import diffpatimg as diff
 
 class roomBuidler:
     #Roygbiv
@@ -48,6 +49,14 @@ class roomBuidler:
 
         self.angularResolution = np.round(eq.angularResolution(np.random.randint(10,20),self.wavelengths[0])*100,1)
         
+
+        wavelenghtsbase = [660e-9,600e-9,575e-9,532e-9,472e-9,437e-9,412e-9]
+        names=["diffimg/red.png","diffimg/orange.png","diffimg/yellow.png","diffimg/green.png","diffimg/blue.png","diffimg/indigo.png","diffimg/violet.png"]
+        text=["red","orange","yellow","green","blue","indigo","violet"]
+        for m in range(7):
+            diff.create_circles_image(names[m],eq.diffractionGrating(wavelenghtsbase[m]),eq.Intensity(wavelenghtsbase[m]), text[m])
+        wavelen = self.wavelengths[1]*10**-9
+        diff.create_circles_image("diffimg/mysterywavelenght.png",eq.diffractionGrating(wavelen),eq.Intensity(wavelen),"Mystery Color")
 
         self.cbroomColorRGB = []
         match self.type:
