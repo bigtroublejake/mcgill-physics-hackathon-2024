@@ -1,6 +1,5 @@
 import pygame, sys
 from pygame.locals import *
-import random
  
 pygame.init()
  
@@ -13,13 +12,13 @@ RED   = (255, 0, 0)
 GREEN = (0, 255, 0)
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
+GRAY = (128, 128, 128)
  
 # Screen information
-SCREEN_WIDTH = 800
-SCREEN_HEIGHT = 600
+SCREEN_WIDTH = 1200
+SCREEN_HEIGHT = 900
  
 DISPLAYSURF = pygame.display.set_mode((SCREEN_WIDTH,SCREEN_HEIGHT))
-DISPLAYSURF.fill(WHITE)
 pygame.display.set_caption("Game")
  
  
@@ -27,6 +26,7 @@ class Player(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__() 
         self.image = pygame.image.load("Sprites/Player.png")
+        self.image = pygame.transform.scale_by(self.image, 0.25)
         self.rect = self.image.get_rect()
         self.rect.center = (160, 520)
  
@@ -61,7 +61,7 @@ while True:
             sys.exit()
     P1.update()
      
-    DISPLAYSURF.fill(WHITE)
+    DISPLAYSURF.fill(GRAY)
     P1.draw(DISPLAYSURF)
          
     pygame.display.update()
