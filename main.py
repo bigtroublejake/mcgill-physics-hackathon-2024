@@ -42,8 +42,8 @@ class Player(pygame.sprite.Sprite):
             self.rect.move_ip(-5, 0)
         if pressed_keys[K_d]:
             self.rect.move_ip(5,0)
-        if pressed_keys[K_f]:
-            lens.toggle()
+        # if pressed_keys[K_f]:
+        #     lens.toggle()
          
         if self.rect.left > 0:
               if pressed_keys[K_LEFT]:
@@ -51,6 +51,10 @@ class Player(pygame.sprite.Sprite):
         if self.rect.right < SCREEN_WIDTH:        
               if pressed_keys[K_RIGHT]:
                   self.rect.move_ip(5, 0)
+    
+
+    def state_toggle(self):
+        lens.toggle()
  
     def draw(self, surface):
         surface.blit(self.image, self.rect)  
@@ -63,6 +67,16 @@ while True:
         if event.type == QUIT:
             pygame.quit()
             sys.exit()
+        elif event.type == KEYDOWN: # Detect single key presses
+                
+                if event.key == K_f:
+                    P1.state_toggle()
+                    # print("f was pressed")
+
+
+
+
+
     P1.update()
      
     DISPLAYSURF.fill(GRAY)
