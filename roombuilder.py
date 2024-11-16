@@ -8,13 +8,48 @@ class roomBuidler:
         self.type = np.random.randint(0,2)
         self.roomColorPos = []
         self.roomColorRGB = []
+
         i=0
         while i<3:
             x = colorList[np.random.randint(0,len(colorList))]
-            self.roomColorPos.append(colorList.index(x))
-            self.roomColorRGB.append(x)
-            colorList.pop(x)
-            i+=1
+            p = colorList.index(x)
+            if(x != None):
+                self.roomColorPos.append(p)
+                self.roomColorRGB.append(x)
+                colorList[p] = None
+                i+=1
+        
+        self.wavelengths = []
+        i=0
+        while i<3:
+            match self.roomColorPos[i]:
+                #red
+                case 0:
+                    self.wavelengths.append(np.random.randint(620,750))
+                    return
+                #orange
+                case 1:
+                    self.wavelengths.append(np.random.randint(580,619))
+                    return
+                #yellow
+                case 2:
+                    self.wavelengths.append(np.random.randint(570,579))
+                    return
+                #green
+                case 3:
+                    self.wavelengths.append(np.random.randint(495,569))
+                    return
+                
+                case 4:
+                    self.wavelengths.append(np.random.randint(450,494))
+                    return
+                case 5:
+                    self.wavelengths.append(np.random.randint(620,750))
+                    return
+                case 6:
+                    self.wavelengths.append(np.random.randint(620,750))
+                    return
+
         self.cbroomColorRGB = []
         match self.type:
             #Protanopia
@@ -28,7 +63,8 @@ class roomBuidler:
                 pViolet = (214,141,214)
                 pRGB = [pRed,pOrange,pYellow,pGreen,pBlue,pIndigo,pViolet]
 
-                while i<3:
+                j = 0
+                while j<3:
                     self.cbroomColorRGB.append(pRGB[self.roomColorPos[i]])
 
                 return
@@ -39,11 +75,28 @@ class roomBuidler:
                 dYellow = (255,255,102)
                 dGreen = (204,204,0)
                 dBlue = (0,0,255)
-                dIndigo = (64)
-                dViolet = ()
-                dRGB = ()
+                dIndigo = (64,0,114)
+                dViolet = (221,159,211)
+                dRGB = [dRed,dOrange,dYellow,dGreen,dBlue,dIndigo, dViolet]
+
+                j=0
+                while j<3:
+                    self.cbroomColorRGB.append(dRGB[self.roomColorPos[i]])
                 return
             #Tritanopes
             case 2:
+                tRed = (255,0,0)
+                tOrange = (255,128,0)
+                tYellow = (255,191,128)
+                tGreen = (128,255,128)
+                tBlue = (0,128,255)
+                tIndigo = (64,0,114)
+                tViolet = (204,169,204)
+                tRGB = [tRed,tOrange,tYellow,tGreen,tBlue,tIndigo,tViolet]
+
+                j=0
+                while j<3:
+                    self.cbroomColorRGB.append(tRGB[self.roomColorPos[i]])
+
                 return
         
