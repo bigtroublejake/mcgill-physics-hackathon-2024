@@ -28,6 +28,8 @@ class Player(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.shown = 1
         self.current_room=0
+        self.state = "room"
+        self.laserAngle = 90
 
     def update(self):
         pressed_keys = pygame.key.get_pressed()
@@ -45,6 +47,13 @@ class Player(pygame.sprite.Sprite):
             self.rect.centery=SCREEN_HEIGHT
             self.current_room+=1
             print('Room#: ', self.current_room)
+
+        if self.state == "snell":
+            if pressed_keys[K_o]:
+                self.laserAngle += 1
+            elif pressed_keys[K_p]:
+                self.laserAngle -= 1
+            
 
         '''
         if self.rect.left > 0:
@@ -100,10 +109,11 @@ while True:
 
     P1.draw(DISPLAYSURF)
 
-    if P1.current_room==0:
-        DISPLAYSURF.blit(TEXT, (100,500))
-    elif P1.current_room >0 and P1.current_room<=3:
-        DISPLAYSURF.blit(LEVELS[P1.current_room-1],(10,10))
+    if P1.state == "room":
+        if P1.current_room==0:
+            DISPLAYSURF.blit(TEXT, (100,500))
+        elif P1.current_room >0 and P1.current_room<=3:
+            DISPLAYSURF.blit(LEVELS[P1.current_room-1],(10,10))
 
     lens.draw(DISPLAYSURF)
     lensLight.draw(DISPLAYSURF)

@@ -31,7 +31,7 @@ class ballBoy(pygame.sprite.Sprite):
         self.shown = False
 
         # Create blurred image
-        self.blur_amount = 10  # Adjust this value to control blur amount
+        self.blur_amount = 30  # Adjust this value to control blur amount
         
         size = self.original_image.get_size()
         smaller_img = pygame.transform.smoothscale(self.original_image, (int(size[0]/self.blur_amount), int(size[1]/self.blur_amount)))
@@ -70,7 +70,7 @@ class ballBoy(pygame.sprite.Sprite):
             pressed_keys = pygame.key.get_pressed()
 
             if pressed_keys[K_t]:
-                self.blurAdd(1.5)
+                self.blurAdd(2)
             if pressed_keys[K_y]:
-                self.blurAdd(-1.5)
+                self.blurAdd(-2)
 
