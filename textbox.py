@@ -9,6 +9,7 @@ TEXT = []
 TEXT.append(my_font.render('You must survive 5 nights at freddy fivebears.', True, WHITE))
 TEXT.append(my_font.render('Press F to bring up lens.', True, WHITE))
 TEXT.append(my_font.render('Press G tp bring up diffraction gratting', True, WHITE))
+TEXT.append(my_font.render('Press H tp bring up refraction stuff', True, WHITE))
 
 LEVELS=[]
 for i in range(3):
