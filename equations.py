@@ -25,5 +25,4 @@ def diffractionGrating(wavelength) -> list:
 
     return(ls)
 
-print(diffractionGrating(670e-9))
 

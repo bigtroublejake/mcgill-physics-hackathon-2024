@@ -55,10 +55,12 @@ class ballBoy(pygame.sprite.Sprite):
         size = self.original_image.get_size()
 
 
-        print(self.blur_amount)
+        # print(self.blur_amount)
 
         if self.blur_amount == 0:
             self.blurred_image = self.original_image
+        elif abs(self.blur_amount) > 70:
+            pass
         else:
             smaller_img = pygame.transform.smoothscale(self.original_image, (int(size[0]/abs(self.blur_amount)), int(size[1]/abs(self.blur_amount))))
             self.blurred_image = pygame.transform.smoothscale(smaller_img, size)

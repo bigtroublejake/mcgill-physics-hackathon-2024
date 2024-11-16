@@ -25,6 +25,7 @@ class Player(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.shown = 1
         self.current_room=0
+        self.state = "room"
 
     def update(self):
         pressed_keys = pygame.key.get_pressed()
@@ -52,10 +53,14 @@ class Player(pygame.sprite.Sprite):
                   self.rect.move_ip(5, 0)
         '''  
 
-    def state_toggle(self):
+    def state_toggle(self, popup):
         self.shown = not self.shown
-        lens.toggle()
-        lensLight.toggle()
+        
+        if popup == "lens":
+            lens.toggle()
+            lensLight.toggle()
+            self.state = "lens" if self.state == "room" else "room"
+            
  
     def draw(self, surface):
         if self.shown == 1:
@@ -70,6 +75,8 @@ for i in range(3):
 
 P1 = Player()
  
+
+
 while True:     
     for event in pygame.event.get():              
         if event.type == QUIT:
@@ -80,7 +87,7 @@ while True:
         elif event.type == KEYDOWN: # Detect single key presses
                 
                 if event.key == K_f:
-                    P1.state_toggle()
+                    P1.state_toggle("lens")
                     # print("f was pressed")
 
 
@@ -93,10 +100,12 @@ while True:
 
     P1.draw(DISPLAYSURF)
 
-    if P1.current_room==0:
-        DISPLAYSURF.blit(TEXT, (100,500))
-    elif P1.current_room >0 and P1.current_room<=3:
-        DISPLAYSURF.blit(LEVELS[P1.current_room-1],(10,10))
+
+    if P1.state == "room":
+        if P1.current_room==0:
+            DISPLAYSURF.blit(TEXT, (100,500))
+        elif P1.current_room >0 and P1.current_room<=3:
+            DISPLAYSURF.blit(LEVELS[P1.current_room-1],(10,10))
 
     lens.draw(DISPLAYSURF)
     lensLight.draw(DISPLAYSURF)
