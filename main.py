@@ -4,6 +4,7 @@ from parameters import *
 from fnaf_cam import Fnaf_cam, ballBoy
 from roombuilder import roomBuidler
 from room import Room
+from textbox import *
 
 pygame.init()
  
@@ -87,8 +88,11 @@ while True:
      
     DISPLAYSURF.fill(GRAY)
     
-    if P1.current_room!=0:
+    if P1.current_room==0:
+        DISPLAYSURF.blit(TEXT, (500,500))
+    elif P1.current_room >0 and P1.current_room<=3:
         rooms[P1.current_room-1].draw(DISPLAYSURF)
+        DISPLAYSURF.blit(LEVELS[P1.current_room-1],(0,0))
     
     P1.draw(DISPLAYSURF)
     lens.draw(DISPLAYSURF)

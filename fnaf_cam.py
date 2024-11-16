@@ -1,6 +1,5 @@
 import pygame
 from pygame.locals import *
-from PIL import Image, ImageFilter
 
 from parameters import *
 class Fnaf_cam(pygame.sprite.Sprite):
