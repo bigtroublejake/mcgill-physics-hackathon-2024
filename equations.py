@@ -1,5 +1,5 @@
 import numpy as np
-
+import diffpatimg as diff
 
 #small angles nobody shall be any wisers
 def angularResolution(diameter, waveLength):
