@@ -86,7 +86,7 @@ while True:
         ### USE THIS FOR ONE TIME KEY PRESSES ###
         elif event.type == KEYDOWN: # Detect single key presses
                 
-                if event.key == K_f and P1.current_room==1:
+                if event.key == K_f:
                     P1.state_toggle("lens")
                     # print("f was pressed")
 
