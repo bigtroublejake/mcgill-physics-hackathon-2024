@@ -11,8 +11,10 @@ def create_circles_image(filename, xpositions, intensity, text):
     start_x = 400
     radius = 40
     radiusinv = 40
-    
-    font = ImageFont.truetype("arial.ttf", 20)
+    try:
+        font = ImageFont.truetype("arial.ttf", 20)
+    except IOError:
+        font = ImageFont.load_default
     text_x = 10
     text_y = 10
     draw.text((text_x, text_y), text, fill="black", font=font)
