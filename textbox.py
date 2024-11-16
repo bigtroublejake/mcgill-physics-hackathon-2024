@@ -12,3 +12,5 @@ for i in range(3):
 
 def SETTEXT(text, color):
     return my_font.render(text, True, color)
+
+LENSINSTRUCTIONS = my_font.render('Use T and Y to adjust diameter of lens', True, WHITE)
