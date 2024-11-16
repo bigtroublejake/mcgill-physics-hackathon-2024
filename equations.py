@@ -34,3 +34,12 @@ def Intensity(wavelength) -> list:
 
         ls.append(float(intensity))
     return ls
+
+
+
+def refractAngleGlass(index, initAngle) -> float:
+    initAngle = np.deg2rad(initAngle)
+    newAngle = np.arcsin(1.000 * np.sin(initAngle) / index)
+    return np.rad2deg(newAngle)
+
+
