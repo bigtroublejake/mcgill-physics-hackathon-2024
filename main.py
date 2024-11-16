@@ -87,14 +87,17 @@ while True:
     P1.update()
 
     DISPLAYSURF.fill(GRAY)
+
+    if P1.current_room >0 and P1.current_room<=3:
+        rooms[P1.current_room-1].draw(DISPLAYSURF)
+
     P1.draw(DISPLAYSURF)
 
     if P1.current_room==0:
         DISPLAYSURF.blit(TEXT, (100,500))
     elif P1.current_room >0 and P1.current_room<=3:
-        rooms[P1.current_room-1].draw(DISPLAYSURF)
-        DISPLAYSURF.blit(LEVELS[P1.current_room],(10,10))
-    
+        DISPLAYSURF.blit(LEVELS[P1.current_room-1],(10,10))
+
     lens.draw(DISPLAYSURF)
     lensLight.draw(DISPLAYSURF)
     lensLight.update()
