@@ -11,9 +11,8 @@ def diffractionGrating(wavelength) -> list:
     d = 5e-6
     L = 100
     ls = []
-    var = 0
 
-    for m in range(7):
+    for m in range(5):
         
         angle = np.arcsin(m * wavelength / d)
         y = L * np.tan(angle)
@@ -25,4 +24,13 @@ def diffractionGrating(wavelength) -> list:
 
     return(ls)
 
+def Intensity(wavelength) -> list:
+    d = 5e-6
+    ls = []
+    L = 100
+    lsy = diffractionGrating(wavelength)
+    for m in range(5):
+        intensity = np.square(np.cos(np.pi*d*lsy[m]/(L*wavelength)))
 
+        ls.append(float(intensity))
+    return ls
