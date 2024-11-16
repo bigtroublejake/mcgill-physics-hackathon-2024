@@ -9,3 +9,6 @@ TEXT = my_font.render('You must survive 5 nights at freddy fivebears. Press F to
 LEVELS=[]
 for i in range(3):
     LEVELS.append(my_font.render('Level '+str(i+1), True, WHITE))
+
+def SETTEXT(text, color):
+    return my_font.render(text, True, color)
