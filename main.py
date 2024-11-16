@@ -1,10 +1,13 @@
 import pygame, sys
 from pygame.locals import *
+
+
 from parameters import *
 from fnaf_cam import Fnaf_cam, ballBoy
 from roombuilder import roomBuidler
 from room import Room
 from textbox import *
+import equations
 
 pygame.init()
  
@@ -54,8 +57,12 @@ class Player(pygame.sprite.Sprite):
 
     def state_toggle(self):
         self.shown = not self.shown
-        lens.toggle()
-        lensLight.toggle()
+
+        if popup == "lens":
+            lens.toggle()
+            lensLight.toggle()
+            self.state = "lens" if self.state == "room" else "room"
+            
  
     def draw(self, surface):
         if self.shown == 1:
