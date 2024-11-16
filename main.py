@@ -81,10 +81,6 @@ while True:
                 if event.key == K_f:
                     P1.state_toggle()
                     # print("f was pressed")
-                if event.key == K_t:
-                    lensLight.blurAdd(1)
-                if event.key == K_y:
-                    lensLight.blurAdd(-1)
 
 
     P1.update()
@@ -97,6 +93,7 @@ while True:
     P1.draw(DISPLAYSURF)
     lens.draw(DISPLAYSURF)
     lensLight.draw(DISPLAYSURF)
+    lensLight.update()
 
 
     pygame.display.update()
