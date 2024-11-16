@@ -116,9 +116,9 @@ while True:
         elif P1.current_room >0 and P1.current_room<=3:
             DISPLAYSURF.blit(LEVELS[P1.current_room-1],(10,10))
 
-    lens.draw(DISPLAYSURF)
     lensLight.draw(DISPLAYSURF)
     lensLight.update()
+    lens.draw(DISPLAYSURF)
     if lens.shown==1:
         DISPLAYSURF.blit(SETTEXT(str(lensLight.blur_amount), WHITE), (SCREEN_WIDTH/2, SCREEN_HEIGHT-80))
         DISPLAYSURF.blit(LENSINSTRUCTIONS, LENSINSTRUCTIONSRECT)

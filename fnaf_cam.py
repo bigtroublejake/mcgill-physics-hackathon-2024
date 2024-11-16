@@ -23,7 +23,8 @@ class Fnaf_cam(pygame.sprite.Sprite):
 class ballBoy(pygame.sprite.Sprite):
     def __init__(self):
         self.original_image = pygame.image.load("Sprites/BallLight.png")
-        self.original_image = pygame.transform.scale_by(self.original_image, 0.7)
+        self.scale_amount = 0.7
+        self.original_image = pygame.transform.scale_by(self.original_image, self.scale_amount)
 
         self.rect = self.original_image.get_rect()
 
@@ -36,6 +37,7 @@ class ballBoy(pygame.sprite.Sprite):
         size = self.original_image.get_size()
         smaller_img = pygame.transform.smoothscale(self.original_image, (int(size[0]/self.blur_amount), int(size[1]/self.blur_amount)))
         self.blurred_image = pygame.transform.smoothscale(smaller_img, size)
+        self.blurAdd(0)
 
     
 
@@ -54,16 +56,25 @@ class ballBoy(pygame.sprite.Sprite):
 
         size = self.original_image.get_size()
 
+        if 0.6 < self.scale_amount + amount < 0.8:
+            self.scale_amount += amount / 700
+            self.blurred_image = pygame.transform.scale_by(self.blurred_image, self.scale_amount)
 
-        # print(self.blur_amount)
+
 
         if self.blur_amount == 0:
             self.blurred_image = self.original_image
         elif abs(self.blur_amount) > 70:
-            pass
+            # cancels out whatever it tried to blur as
+            self.blur_amount -= amount
         else:
             smaller_img = pygame.transform.smoothscale(self.original_image, (int(size[0]/abs(self.blur_amount)), int(size[1]/abs(self.blur_amount))))
             self.blurred_image = pygame.transform.smoothscale(smaller_img, size)
+
+
+
+        self.rect = self.blurred_image.get_rect()
+        self.rect.center = (SCREEN_WIDTH // 2, SCREEN_HEIGHT //2)
 
     def update(self):
         if self.shown == True:
@@ -73,4 +84,7 @@ class ballBoy(pygame.sprite.Sprite):
                 self.blurAdd(2)
             if pressed_keys[K_y]:
                 self.blurAdd(-2)
+        
+            # print(self.scale_amount)
+            # print(self.blurred_image.get_rect())
 
