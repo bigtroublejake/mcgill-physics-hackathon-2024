@@ -207,8 +207,8 @@ while True:
         DISPLAYSURF.blit(SETTEXT('Measured wavelength = '+str(equations.wavelength(P1.angle, P1.diameter))+' nm', WHITE), (SCREEN_WIDTH/2-100, SCREEN_HEIGHT-60))
         DISPLAYSURF.blit(LENSINSTRUCTIONS, LENSINSTRUCTIONSRECT)
 
-    snellLens.update()
-    snellLens.draw(DISPLAYSURF)
+    # snellLens.update()
+    # snellLens.draw(DISPLAYSURF)
 
 
     pygame.display.update()
