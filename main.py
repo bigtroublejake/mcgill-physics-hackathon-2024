@@ -207,7 +207,7 @@ while True:
     colorsdiff.draw(DISPLAYSURF)
     blankdiff.draw(DISPLAYSURF)
     if lens.shown==1:
-        DISPLAYSURF.blit(SETTEXT('Angle of resolution = '+str(P1.angle)+' 10^-11 degrees', WHITE), (SCREEN_WIDTH/2-100, SCREEN_HEIGHT-80))
+        DISPLAYSURF.blit(SETTEXT('Angle of resolution = '+str(P1.angle)+' 10^-9 degrees', WHITE), (SCREEN_WIDTH/2-100, SCREEN_HEIGHT-80))
         DISPLAYSURF.blit(SETTEXT('Measured wavelength = '+str(equations.wavelength(P1.angle, P1.diameter))+' nm', WHITE), (SCREEN_WIDTH/2-100, SCREEN_HEIGHT-60))
         DISPLAYSURF.blit(LENSINSTRUCTIONS, LENSINSTRUCTIONSRECT)
 
