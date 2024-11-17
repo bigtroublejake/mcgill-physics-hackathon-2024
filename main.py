@@ -61,7 +61,7 @@ class Player(pygame.sprite.Sprite):
             #if inWallx:
             #    self.rect.move_ip(-7,0)
 
-        if self.rect.centery==0:
+        if self.rect.centery==0 and self.current_room<=4:
             self.rect.centery=SCREEN_HEIGHT
             self.current_room+=1
             print('Room#: ', self.current_room)
@@ -126,6 +126,9 @@ while True:
                 DISPLAYSURF.blit(TEXT[i], (100,500+25*i))
         elif P1.current_room >0 and P1.current_room<=3:
             DISPLAYSURF.blit(LEVELS[P1.current_room-1],(10,10))
+        elif P1.current_room==4:
+            for i in range(len(TEXTEND)):
+                DISPLAYSURF.blit(TEXTEND[i], (100, 500+25*i))
 
     lensLight.draw(DISPLAYSURF)
     lensLight.update()
