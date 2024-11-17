@@ -22,9 +22,12 @@ TEXTLEVEL2=my_font.render('Theres a diffraction grating, the light shines throug
 
 TEXTLEVEL3=my_font.render('There are pieces of glass refracting light.', True, WHITE)
 
+TEXTSECRET1=my_font.render('Thank you for checking out our very cool project.', True, WHITE)
+TEXTSECRET2=my_font.render('Be free!!!', True, WHITE)
+
 TEXTEND=[]
 TEXTEND.append(my_font.render('You made it to the end! With the information you have gathered you must determine', True, WHITE))
-TEXTEND.append(my_font.render('which type of colourblindness you have.', True, WHITE))
+TEXTEND.append(my_font.render('which type of colourblindness you have. (Go to next room for answer)', True, WHITE))
 TEXTEND.append(my_font.render(' ', True, WHITE))
 TEXTEND.append(my_font.render(' ', True, WHITE))
 TEXTEND.append(my_font.render(' ', True, WHITE))

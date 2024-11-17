@@ -91,7 +91,7 @@ class Player(pygame.sprite.Sprite):
             #if inWallx:
             #    self.rect.move_ip(-7,0)
 
-        if self.rect.centery==0 and self.current_room<=4:
+        if self.rect.centery==0 and self.current_room<=5:
             self.rect.centery=SCREEN_HEIGHT
             self.current_room+=1
             print('Room#: ', self.current_room)
@@ -211,6 +211,16 @@ while True:
         elif P1.current_room==4:
             for i in range(len(TEXTEND)):
                 DISPLAYSURF.blit(TEXTEND[i], (100, 200+25*i))
+        elif P1.current_room==5:
+            DISPLAYSURF.blit(TEXTSECRET1, (100, 300))
+            if builder.type==0:
+                DISPLAYSURF.blit(SETTEXT('Answer: Protanopia (RED)', WHITE), (100,400))
+            if builder.type==1:
+                DISPLAYSURF.blit(SETTEXT('Answer: Deuteranopia (GREEN)', WHITE), (100,400))
+            if builder.type==2:
+                DISPLAYSURF.blit(SETTEXT('Answer: Tritanopia (BLUE-YELLOW)', WHITE), (100,400))
+        elif P1.current_room==6:
+            DISPLAYSURF.blit(TEXTSECRET2, (100, 300))
 
     lensLight.draw(DISPLAYSURF)
     #lensLight.update() -> NOT NEEDED ANYMORE LEAVE COMMENTED
