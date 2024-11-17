@@ -23,7 +23,7 @@ class Fnaf_cam(pygame.sprite.Sprite):
 class ballBoy(pygame.sprite.Sprite):
     def __init__(self):
         self.original_image = pygame.image.load("Sprites/BallLight.png")
-        self.scale_amount = 0.7
+        self.scale_amount = 0.2
         self.original_image = pygame.transform.scale_by(self.original_image, self.scale_amount)
 
         self.rect = self.original_image.get_rect()
@@ -32,7 +32,7 @@ class ballBoy(pygame.sprite.Sprite):
         self.shown = False
 
         # Create blurred image
-        self.blur_amount = 30  # Adjust this value to control blur amount
+        self.blur_amount = 17  # Adjust this value to control blur amount
         
         size = self.original_image.get_size()
         smaller_img = pygame.transform.smoothscale(self.original_image, (int(size[0]/self.blur_amount), int(size[1]/self.blur_amount)))
@@ -64,7 +64,7 @@ class ballBoy(pygame.sprite.Sprite):
 
         if self.blur_amount == 0:
             self.blurred_image = self.original_image
-        elif abs(self.blur_amount) > 70:
+        elif abs(self.blur_amount) > 30:
             # cancels out whatever it tried to blur as
             self.blur_amount -= amount
         else:
@@ -81,9 +81,9 @@ class ballBoy(pygame.sprite.Sprite):
             pressed_keys = pygame.key.get_pressed()
 
             if pressed_keys[K_t]:
-                self.blurAdd(2)
+                self.blurAdd(1)
             if pressed_keys[K_y]:
-                self.blurAdd(-2)
+                self.blurAdd(-1)
         
             # print(self.scale_amount)
             # print(self.blurred_image.get_rect())
