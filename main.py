@@ -225,6 +225,9 @@ while True:
         DISPLAYSURF.blit(SETTEXT('Measured wavelength = '+str(round(equations.wavelength(P1.angle, P1.diameter),2))+' nm', WHITE), (SCREEN_WIDTH/2-100, SCREEN_HEIGHT-60))
         DISPLAYSURF.blit(LENSINSTRUCTIONS, LENSINSTRUCTIONSRECT)
 
+    if mysterydiff.shown==1:
+        DISPLAYSURF.blit(DIFFINSTRUCTIONS, DIFFINSTRUCTIONSRECT)
+
     # snellLens.update()
     # snellLens.draw(DISPLAYSURF)
 

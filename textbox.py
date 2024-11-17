@@ -38,3 +38,6 @@ def SETTEXT(text, color):
 
 LENSINSTRUCTIONS = my_font.render('(Use T and Y to adjust the angular resolution of lens)', True, WHITE)
 LENSINSTRUCTIONSRECT = LENSINSTRUCTIONS.get_rect(center=(SCREEN_WIDTH/2, SCREEN_HEIGHT-25))
+
+DIFFINSTRUCTIONS = my_font.render('(Use arrow keys to cycle between diffraction patterns)', True, WHITE)
+DIFFINSTRUCTIONSRECT = LENSINSTRUCTIONS.get_rect(center=(SCREEN_WIDTH/2, SCREEN_HEIGHT-40))
