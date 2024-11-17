@@ -20,7 +20,7 @@ TEXTLEVEL1=my_font.render('You see a light at the end of the room. Maybe you hav
 
 TEXTLEVEL2=my_font.render('Theres a diffraction grating, the light shines through it.', True, WHITE)
 
-TEXTLEVEL3=my_font.render('Theres pieces of glass.', True, WHITE)
+TEXTLEVEL3=my_font.render('There are pieces of glass refracting light.', True, WHITE)
 
 TEXTEND=[]
 TEXTEND.append(my_font.render('You made it to the end! With the information you have gathered you must determine', True, WHITE))
