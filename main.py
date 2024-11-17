@@ -3,7 +3,7 @@ from pygame.locals import *
 
 
 from parameters import *
-from fnaf_cam import Fnaf_cam, ballBoy, diffpattmystery, colordiff
+from fnaf_cam import Fnaf_cam, ballBoy, diffpattmystery, colordiff, blankpattern
 from roombuilder import roomBuidler
 from room import Room
 from textbox import *
@@ -28,6 +28,7 @@ lens = Fnaf_cam()
 lensLight = ballBoy()
 mysterydiff = diffpattmystery()
 colorsdiff = colordiff()
+blankdiff = blankpattern()
 
 
 rooms = []
@@ -136,10 +137,12 @@ class Player(pygame.sprite.Sprite):
                 lensLight.toggle()
             self.state = "lens" if self.state == "room" else "room"
         if popup == "diffraction":
-            if self.current_room == 2:
+            if self.current_room == 2 and blankdiff.shown == False:
                 mysterydiff.toggle()
                 if colorsdiff.shown == True and mysterydiff.shown == False:
                     colorsdiff.toggle()
+            else:
+                blankdiff.toggle()
             self.state = "diffraction" if self.state == "room" else "room"
         if popup == "diffchange":
             if mysterydiff.shown == True and self.current_room == 2:
@@ -170,7 +173,7 @@ while True:
                 if event.key == K_f:
                     P1.state_toggle("lens" , K_f)
                     # print("f was pressed")
-                if event.key == K_g and P1.current_room == 2:
+                if event.key == K_g:
                     P1.state_toggle("diffraction", K_g)
                 if event.key == K_RIGHT:
                     P1.state_toggle("diffchange", K_RIGHT)
@@ -202,6 +205,7 @@ while True:
     lens.draw(DISPLAYSURF)
     mysterydiff.draw(DISPLAYSURF)
     colorsdiff.draw(DISPLAYSURF)
+    blankdiff.draw(DISPLAYSURF)
     if lens.shown==1:
         DISPLAYSURF.blit(SETTEXT('Angle of resolution = '+str(P1.angle)+' 10^-11 degrees', WHITE), (SCREEN_WIDTH/2-100, SCREEN_HEIGHT-80))
         DISPLAYSURF.blit(SETTEXT('Measured wavelength = '+str(equations.wavelength(P1.angle, P1.diameter))+' nm', WHITE), (SCREEN_WIDTH/2-100, SCREEN_HEIGHT-60))
