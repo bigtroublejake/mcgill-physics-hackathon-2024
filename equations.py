@@ -3,7 +3,7 @@ import numpy as np
 #small angles nobody shall be any wisers
 def angularResolution(diameter, waveLength):
     "returns the angular resolution when the diameter was changed"
-    return ((1.22)*(diameter/waveLength))
+    return ((1.22)*(waveLength/diameter))
 
 def diffractionGrating(wavelength) -> list:
     "returns a list of the position of the nodes"
@@ -41,4 +41,5 @@ def refractAngleGlass(index, initAngle) -> float:
     newAngle = np.arcsin(1.000 * np.sin(initAngle) / index)
     return np.rad2deg(newAngle)
 
-
+def diameter(angularResolution, waveLenght):
+    return((1.22)*waveLenght/angularResolution)

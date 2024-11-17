@@ -20,30 +20,49 @@ pygame.display.set_caption("Game")
 lens = Fnaf_cam()
 lensLight = ballBoy()
 
+# Create rooms 
+builder = roomBuidler()
+roomWidth = SCREEN_WIDTH
+roomHeight = 1200
+
+rooms = []
+for i in range(3):
+    rooms.append(Room(builder.cbroomColorRGB[i],roomWidth,roomHeight,SCREEN_WIDTH/2,0))
+wall1=(SCREEN_WIDTH-roomWidth)/2
+wall2=SCREEN_WIDTH-(SCREEN_WIDTH-roomWidth)/2
+wallThick=10
+
 class Player(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__() 
         self.image = pygame.image.load("Sprites/Player.png")
         self.image = pygame.transform.scale_by(self.image, 0.25)
         self.rect = self.image.get_rect()
+        self.rect.center = (SCREEN_WIDTH/2,SCREEN_HEIGHT/2)
         self.shown = 1
         self.current_room=0
         self.state = "room"
         self.laserAngle = 90
 
     def update(self):
+
+        #inWallx = (self.rect.centerx>wall1-wallThick and self.rect.centerx<wall1+wallThick) or (self.rect.centerx>wall2-wallThick and self.rect.centerx<wall2+wallThick)
+
         pressed_keys = pygame.key.get_pressed()
-        
         if pressed_keys[K_w]:
             self.rect.move_ip(0, -5)
         if pressed_keys[K_s]and self.rect.centery<SCREEN_HEIGHT:
             self.rect.move_ip(0,5)
         if pressed_keys[K_a] and self.rect.centerx>0:
             self.rect.move_ip(-5, 0)
+            #if inWallx:
+            #    self.rect.move_ip(7,0)
         if pressed_keys[K_d] and self.rect.centerx<SCREEN_WIDTH:
             self.rect.move_ip(5,0)
+            #if inWallx:
+            #    self.rect.move_ip(-7,0)
 
-        if self.rect.centery==0:
+        if self.rect.centery==0 and self.current_room<=4:
             self.rect.centery=SCREEN_HEIGHT
             self.current_room+=1
             print('Room#: ', self.current_room)
@@ -76,13 +95,6 @@ class Player(pygame.sprite.Sprite):
     def draw(self, surface):
         if self.shown == 1:
             surface.blit(self.image, self.rect)  
- 
-# Create rooms 
-builder = roomBuidler()
-roomSize = [800, 1200]
-rooms = []
-for i in range(3):
-    rooms.append(Room(builder.cbroomColorRGB[i],roomSize[0],roomSize[1],SCREEN_WIDTH/2,0))
 
 P1 = Player()
  
@@ -115,6 +127,9 @@ while True:
                 DISPLAYSURF.blit(TEXT[i], (100,500+25*i))
         elif P1.current_room >0 and P1.current_room<=3:
             DISPLAYSURF.blit(LEVELS[P1.current_room-1],(10,10))
+        elif P1.current_room==4:
+            for i in range(len(TEXTEND)):
+                DISPLAYSURF.blit(TEXTEND[i], (100, 500+25*i))
 
     lensLight.draw(DISPLAYSURF)
     lensLight.update()

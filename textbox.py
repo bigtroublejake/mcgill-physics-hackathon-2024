@@ -18,8 +18,9 @@ TEXTLEVEL2=my_font.render('Theres a plane with a grating, the light shines throu
 
 TEXTLEVEL3=my_font.render('Theres pieces of glass.', True, WHITE)
 
-TEXTEND1=my_font.render('You made it to the end! With the information you have gathered you must determine', True, WHITE)
-TEXTEND2=my_font.render('which type of colourblindness you have.', True, WHITE)
+TEXTEND=[]
+TEXTEND.append(my_font.render('You made it to the end! With the information you have gathered you must determine', True, WHITE))
+TEXTEND.append(my_font.render('which type of colourblindness you have.', True, WHITE))
 
 LEVELS=[]
 for i in range(3):
