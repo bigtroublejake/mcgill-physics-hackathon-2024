@@ -63,7 +63,7 @@ class ballBoy(pygame.sprite.Sprite):
 
         if self.blur_amount == 0:
             self.blurred_image = self.original_image
-        elif abs(self.blur_amount) > 70:
+        elif abs(self.blur_amount) > 60:
             # cancels out whatever it tried to blur as
             self.blur_amount -= amount
         else:
@@ -73,6 +73,7 @@ class ballBoy(pygame.sprite.Sprite):
         self.rect = self.blurred_image.get_rect()
         self.rect.center = (SCREEN_WIDTH // 2, SCREEN_HEIGHT //2)
     
+    '''
     def update(self):
         if self.shown == True:
             pressed_keys = pygame.key.get_pressed()
@@ -84,6 +85,8 @@ class ballBoy(pygame.sprite.Sprite):
         
             # print(self.scale_amount)
             # print(self.blurred_image.get_rect())
+    '''
+    
 class diffpattmystery(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__() 

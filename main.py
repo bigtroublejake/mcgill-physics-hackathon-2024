@@ -54,9 +54,14 @@ class Player(pygame.sprite.Sprite):
         self.diameter = equations.diameter(builder.angularResolution, builder.wavelengths[0])
         self.angle = equations.angularResolution(self.diameter, builder.wavelengths[0])
 
+        # Set an initial change so the puzzle isn't solved immediately
+        self.initialChange = np.random.randint(25,40)
+        lensLight.blurAdd(self.initialChange)
+        self.angle+=self.initialChange
         self.laserAngle = 90
         self.colorsname = ["red","orange","yellow","green","blue","indigo","violet"]
         self.colorposition =0
+
     def colorchange(self,key) -> str:
         if key == K_RIGHT:
             self.colorposition+=1
@@ -94,12 +99,19 @@ class Player(pygame.sprite.Sprite):
 
         # ROOM 1 - LENS
         if self.state == 'lens':
-            if pressed_keys[K_t] and abs(lensLight.blur_amount)<60:
+            if pressed_keys[K_t] and lensLight.blur_amount<60:
                 lensLight.blurAdd(1)
                 self.angle+=1
-            if pressed_keys[K_y] and abs(lensLight.blur_amount)<60:
+            if pressed_keys[K_y] and lensLight.blur_amount>-60:
                 lensLight.blurAdd(-1)
                 self.angle-=1
+            if pressed_keys[K_t] and lensLight.blur_amount>=60:
+                lensLight.blurAdd(-2)
+                self.angle-=2
+            if pressed_keys[K_y] and lensLight.blur_amount<=-60:
+                lensLight.blurAdd(2)
+                self.angle+=2
+
         
         # ROOM 2 - REFRACTION
         if self.state == "snell":
@@ -190,7 +202,7 @@ while True:
                 DISPLAYSURF.blit(TEXTEND[i], (100, 500+25*i))
 
     lensLight.draw(DISPLAYSURF)
-    lensLight.update()
+    #lensLight.update()
     lens.draw(DISPLAYSURF)
     mysterydiff.draw(DISPLAYSURF)
     colorsdiff.draw(DISPLAYSURF)
