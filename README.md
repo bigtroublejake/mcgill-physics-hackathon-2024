@@ -7,4 +7,4 @@ for requirements do
 ```
 pip install -r requirements.txt
 ```
-![Spalsh Art](Sprites/Splash Art.png)
+![Spalsh Art](Sprites/Splash_Art.png)
