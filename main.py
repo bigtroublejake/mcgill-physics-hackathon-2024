@@ -198,7 +198,7 @@ while True:
     if P1.state == "room":
         if P1.current_room==0:
             for i in range(len(TEXT)):
-                DISPLAYSURF.blit(TEXT[i], (100,500+25*i))
+                DISPLAYSURF.blit(TEXT[i], (50,500+25*i))
         elif P1.current_room >0 and P1.current_room<=3:
             DISPLAYSURF.blit(LEVELS[P1.current_room-1],(10,10))
         elif P1.current_room==4:

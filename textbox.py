@@ -6,11 +6,12 @@ pygame.font.init()
 my_font = pygame.font.SysFont('Comic Sans MS', 30)
 
 TEXT = []
-TEXT.append(my_font.render('You must determine the colour of each room, but alas, you are colourblind!', True, WHITE))
-TEXT.append(my_font.render(' ', True, WHITE))
-TEXT.append(my_font.render('Press F to bring up lens.', True, WHITE))
-TEXT.append(my_font.render('Press G tp bring up diffraction gratting', True, WHITE))
-TEXT.append(my_font.render('Press H tp bring up refraction stuff', True, WHITE))
+TEXT.append(my_font.render('Hello Spy, you must sneak through the facility by blending in.', True, WHITE))
+TEXT.append(my_font.render('However, you have a type of color blindness so figure out the color using gadgets', True, WHITE))
+TEXT.append(my_font.render('', True, WHITE))
+TEXT.append(my_font.render('Press F to bring up lens to observe an source and find its wavelength.', True, WHITE))
+TEXT.append(my_font.render('Press G to bring up a mystery diffraction gratting whcih you can compare', True, WHITE))
+TEXT.append(my_font.render('Press H to bring up refraction stuff', True, WHITE))
 
 TEXTLEVEL1=my_font.render('You see a light at the end of the room. Maybe you have something to focus on it.', True, WHITE)
 
