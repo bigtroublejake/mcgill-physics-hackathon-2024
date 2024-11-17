@@ -13,5 +13,7 @@ pip install -r requirements.txt
 ```
 python3 main.py
 ```
+## Images
 ![Splash Art](Sprites/Splash_Art.png)
 
+![Image]('Images/Screenshot from 2024-11-17 11-48-55.png')
