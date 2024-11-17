@@ -11,8 +11,10 @@ TEXT.append(my_font.render('However, you have a type of color blindness so figur
 TEXT.append(my_font.render('', True, WHITE))
 TEXT.append(my_font.render('Press F to bring up lens to observe an source and find its wavelength.', True, WHITE))
 TEXT.append(my_font.render('Press G to bring up a myster diffraction which you can compare to basic diffraction of colors', True, WHITE))
-TEXT.append(my_font.render('Press H to bring up refraction stuff', True, WHITE))
+TEXT.append(my_font.render('Press H to bring up refraction stuff (doesn\'t work)', True, WHITE))
 TEXT.append(my_font.render('Press C to bring up a wavelength to colour chart', True, WHITE))
+TEXT.append(my_font.render('', True, WHITE))
+TEXT.append(my_font.render('NOTE: Once you leave a room you can\'t go back!', True, WHITE))
 
 TEXTLEVEL1=my_font.render('You see a light at the end of the room. Maybe you have something to focus on it.', True, WHITE)
 

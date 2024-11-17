@@ -203,11 +203,11 @@ while True:
         elif P1.current_room >0 and P1.current_room<=3:
             DISPLAYSURF.blit(LEVELS[P1.current_room-1],(10,10))
             if P1.current_room==1:
-                DISPLAYSURF.blit(TEXTLEVEL1, (100,500))
+                DISPLAYSURF.blit(TEXTLEVEL1, (100,700))
             if P1.current_room==2:
-                DISPLAYSURF.blit(TEXTLEVEL2, (100,500))
+                DISPLAYSURF.blit(TEXTLEVEL2, (100,700))
             if P1.current_room==3:
-                DISPLAYSURF.blit(TEXTLEVEL3, (100,500))
+                DISPLAYSURF.blit(TEXTLEVEL3, (100,700))
         elif P1.current_room==4:
             for i in range(len(TEXTEND)):
                 DISPLAYSURF.blit(TEXTEND[i], (100, 200+25*i))
