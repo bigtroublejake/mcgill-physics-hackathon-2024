@@ -37,9 +37,6 @@ wall1=(SCREEN_WIDTH-roomWidth)/2
 wall2=SCREEN_WIDTH-(SCREEN_WIDTH-roomWidth)/2
 wallThick=10
 
-
-
-
 class Player(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__() 
@@ -97,7 +94,7 @@ class Player(pygame.sprite.Sprite):
             self.current_room+=1
             print('Room#: ', self.current_room)
 
-        # ROOM 1 - LENS
+        # ROOM 1 - LENS - THIS WORKS DON'T TOUCH
         if self.state == 'lens':
             if pressed_keys[K_t] and lensLight.blur_amount<60:
                 lensLight.blurAdd(1)
@@ -111,7 +108,6 @@ class Player(pygame.sprite.Sprite):
             if pressed_keys[K_y] and lensLight.blur_amount<=-60:
                 lensLight.blurAdd(2)
                 self.angle+=2
-
         
         # ROOM 2 - REFRACTION
         if self.state == "snell":
@@ -202,7 +198,7 @@ while True:
                 DISPLAYSURF.blit(TEXTEND[i], (100, 500+25*i))
 
     lensLight.draw(DISPLAYSURF)
-    #lensLight.update()
+    #lensLight.update() -> NOT NEEDED ANYMORE LEAVE COMMENTED
     lens.draw(DISPLAYSURF)
     mysterydiff.draw(DISPLAYSURF)
     colorsdiff.draw(DISPLAYSURF)

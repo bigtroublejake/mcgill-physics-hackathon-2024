@@ -73,6 +73,7 @@ class ballBoy(pygame.sprite.Sprite):
         self.rect = self.blurred_image.get_rect()
         self.rect.center = (SCREEN_WIDTH // 2, SCREEN_HEIGHT //2)
     
+    # NOT NEEDED -> MOVED TO MAIN
     '''
     def update(self):
         if self.shown == True:
