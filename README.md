@@ -10,7 +10,7 @@ Welcome aspiring spy, we challenge you to eye spy. A game where you must sneak t
 
 ## Challenges
 1. Most of the members main programming language was not Python and have never used Pygame, slowing us down by requiring us to learn the syntax and structuring
-2. We had to randomly generate the color blindeness typing and adjust the appereance of rooms based on it, as well as finding the appropriate wavelength for the colors
+2. We had to randomly generate the color blindeness type and adjust the appearance of rooms based on it, as well as finding the appropriate wavelength for the colors
 3. We also struggled with level design unsure of how we wanted the player to solve the room color in different methods
    
 ## Instructions
