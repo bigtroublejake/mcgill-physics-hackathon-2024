@@ -19,24 +19,25 @@ DISPLAYSURF = pygame.display.set_mode((SCREEN_WIDTH,SCREEN_HEIGHT))
 pygame.display.set_caption("Game")
  
 
-# Create rooms 
+# CREATE ROOMS
 builder = roomBuidler()
 roomWidth = SCREEN_WIDTH
 roomHeight = 1200
 
+rooms = []
+for i in range(3):
+    rooms.append(Room(builder.cbroomColorRGB[i],roomWidth,roomHeight,SCREEN_WIDTH/2,0))
+#wall1=(SCREEN_WIDTH-roomWidth)/2
+#wall2=SCREEN_WIDTH-(SCREEN_WIDTH-roomWidth)/2
+#wallThick=10
+
+# CREATE FNAF STUFF
 lens = Fnaf_cam()
 lensLight = ballBoy()
 mysterydiff = diffpattmystery()
 colorsdiff = colordiff()
 blankdiff = blankpattern()
 chart = ColourChart()
-
-rooms = []
-for i in range(3):
-    rooms.append(Room(builder.cbroomColorRGB[i],roomWidth,roomHeight,SCREEN_WIDTH/2,0))
-wall1=(SCREEN_WIDTH-roomWidth)/2
-wall2=SCREEN_WIDTH-(SCREEN_WIDTH-roomWidth)/2
-wallThick=10
 
 class Player(pygame.sprite.Sprite):
     def __init__(self):
@@ -201,9 +202,15 @@ while True:
                 DISPLAYSURF.blit(TEXT[i], (25,500+25*i))
         elif P1.current_room >0 and P1.current_room<=3:
             DISPLAYSURF.blit(LEVELS[P1.current_room-1],(10,10))
+            if P1.current_room==1:
+                DISPLAYSURF.blit(TEXTLEVEL1, (100,500))
+            if P1.current_room==2:
+                DISPLAYSURF.blit(TEXTLEVEL2, (100,500))
+            if P1.current_room==3:
+                DISPLAYSURF.blit(TEXTLEVEL3, (100,500))
         elif P1.current_room==4:
             for i in range(len(TEXTEND)):
-                DISPLAYSURF.blit(TEXTEND[i], (100, 500+25*i))
+                DISPLAYSURF.blit(TEXTEND[i], (100, 200+25*i))
 
     lensLight.draw(DISPLAYSURF)
     #lensLight.update() -> NOT NEEDED ANYMORE LEAVE COMMENTED

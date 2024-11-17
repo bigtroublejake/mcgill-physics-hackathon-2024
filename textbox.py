@@ -16,13 +16,18 @@ TEXT.append(my_font.render('Press C to bring up a wavelength to colour chart', T
 
 TEXTLEVEL1=my_font.render('You see a light at the end of the room. Maybe you have something to focus on it.', True, WHITE)
 
-TEXTLEVEL2=my_font.render('Theres a plane with a grating, the light shines through it.', True, WHITE)
+TEXTLEVEL2=my_font.render('Theres a diffraction grating, the light shines through it.', True, WHITE)
 
 TEXTLEVEL3=my_font.render('Theres pieces of glass.', True, WHITE)
 
 TEXTEND=[]
 TEXTEND.append(my_font.render('You made it to the end! With the information you have gathered you must determine', True, WHITE))
 TEXTEND.append(my_font.render('which type of colourblindness you have.', True, WHITE))
+TEXTEND.append(my_font.render(' ', True, WHITE))
+TEXTEND.append(my_font.render(' ', True, WHITE))
+TEXTEND.append(my_font.render(' ', True, WHITE))
+TEXTEND.append(my_font.render(' ', True, WHITE))
+TEXTEND.append(my_font.render('Protanopia (RED blindness)    Deuteranopia (GREEN blindness)   Tritanopia (BLUE-YELLOW blindness)', True, WHITE))
 
 LEVELS=[]
 for i in range(3):
@@ -31,5 +36,5 @@ for i in range(3):
 def SETTEXT(text, color):
     return my_font.render(text, True, color)
 
-LENSINSTRUCTIONS = my_font.render('(Use T and Y to adjust diameter of lens)', True, WHITE)
-LENSINSTRUCTIONSRECT = LENSINSTRUCTIONS.get_rect(center=(SCREEN_WIDTH/2, SCREEN_HEIGHT-30))
+LENSINSTRUCTIONS = my_font.render('(Use T and Y to adjust the angular resolution of lens)', True, WHITE)
+LENSINSTRUCTIONSRECT = LENSINSTRUCTIONS.get_rect(center=(SCREEN_WIDTH/2, SCREEN_HEIGHT-25))
