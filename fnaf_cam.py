@@ -32,11 +32,7 @@ class ballBoy(pygame.sprite.Sprite):
         self.shown = False
 
         # Create blurred image
-<<<<<<< Updated upstream
-        self.blur_amount = 0  # Adjust this value to control blur amount
-=======
         self.blur_amount = 30  # Adjust this value to control blur amount
->>>>>>> Stashed changes
         
         size = self.original_image.get_size()
         smaller_img = self.original_image
@@ -92,11 +88,11 @@ class diffpattmystery(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__() 
         self.image = pygame.image.load("diffimg/mysterywavelength.png")
-
-        
         self.rect = self.image.get_rect()
         self.rect.center = (SCREEN_WIDTH/2, SCREEN_HEIGHT/2)
         self.shown = False
+        self.image.convert_alpha
+        self.image.set_alpha(50)
 
 
     def toggle(self):
@@ -109,13 +105,15 @@ class colordiff(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__() 
         self.image = pygame.image.load("diffimg/red.png")
-        self.image.convert_alpha
-        self.image.set_alpha(80)
         self.rect = self.image.get_rect()
         self.rect.center = (SCREEN_WIDTH/2, SCREEN_HEIGHT/2)
         self.shown = False
     def imgchange(self, color):
-        self.image = pygame.image.load("diffimg/"+color+".png")
+        path = "diffimg/"+color+".png"
+        print(path)
+        self.image = pygame.image.load(path)
+        self.image.convert_alpha
+        self.image.set_alpha(50)
     def toggle(self):
         print("toggle color patterns")
         self.shown = not self.shown

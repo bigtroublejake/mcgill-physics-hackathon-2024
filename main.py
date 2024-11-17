@@ -48,10 +48,8 @@ class Player(pygame.sprite.Sprite):
         self.shown = 1
         self.current_room=0
         self.state = "room"
-<<<<<<< Updated upstream
         # self.laserAngle = 90
 
-=======
         self.laserAngle = 90
         self.colorsname = ["red","orange","yellow","green","blue","indigo","violet"]
         self.colorposition =0
@@ -67,7 +65,6 @@ class Player(pygame.sprite.Sprite):
             self.colorposition = len(self.colorsname)-1
         return self.colorsname[self.colorposition]
     
->>>>>>> Stashed changes
     def update(self):
 
         #inWallx = (self.rect.centerx>wall1-wallThick and self.rect.centerx<wall1+wallThick) or (self.rect.centerx>wall2-wallThick and self.rect.centerx<wall2+wallThick)
@@ -118,10 +115,13 @@ class Player(pygame.sprite.Sprite):
         if popup == "diffraction":
             if self.current_room == 2:
                 mysterydiff.toggle()
-        if popup == "diffchange":
-            if mysterydiff.shown == True:
-                colorsdiff.imgchange(self.colorchange(key))
             self.state = "diffraction" if self.state == "room" else "room"
+        if popup == "diffchange":
+            if mysterydiff.shown == True and self.current_room == 1:
+                colorsdiff.imgchange(self.colorchange(key))
+                if colorsdiff.shown == False:
+                    colorsdiff.toggle()
+            self.state = "diffchange" if self.state == "room" else "room"
 
 
             
@@ -150,7 +150,7 @@ while True:
                 if event.key == K_RIGHT:
                     P1.state_toggle("diffchange", K_RIGHT)
                 if event.key == K_LEFT:
-                    P1.state_toggle("diffraction", K_LEFT)
+                    P1.state_toggle("diffchange", K_LEFT)
 
 
     P1.update()
@@ -176,6 +176,7 @@ while True:
     lensLight.update()
     lens.draw(DISPLAYSURF)
     mysterydiff.draw(DISPLAYSURF)
+    colorsdiff.draw(DISPLAYSURF)
     if lens.shown==1:
         DISPLAYSURF.blit(SETTEXT(str(lensLight.blur_amount), WHITE), (SCREEN_WIDTH/2, SCREEN_HEIGHT-80))
         DISPLAYSURF.blit(LENSINSTRUCTIONS, LENSINSTRUCTIONSRECT)
