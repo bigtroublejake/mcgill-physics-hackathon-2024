@@ -115,6 +115,8 @@ class Player(pygame.sprite.Sprite):
         if popup == "diffraction":
             if self.current_room == 2:
                 mysterydiff.toggle()
+                if colorsdiff.shown == True and mysterydiff.shown == False:
+                    colorsdiff.toggle()
             self.state = "diffraction" if self.state == "room" else "room"
         if popup == "diffchange":
             if mysterydiff.shown == True and self.current_room == 2:
