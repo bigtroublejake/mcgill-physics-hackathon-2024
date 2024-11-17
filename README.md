@@ -4,6 +4,6 @@ Welcome aspiring spy, we challenge you to eye spy. A game where you must sneak t
 
 for requirements do
 
-'''
+```
 pip install -r requirements.txt
-'''
+```
