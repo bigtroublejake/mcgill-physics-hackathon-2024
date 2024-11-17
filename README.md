@@ -11,5 +11,3 @@ pip install -r requirements.txt
 ```
 ![Splash Art](Sprites/Splash_Art.png)
 
-Demo of our game (scaling issue due to my device):
-[![Watch the video]()](https://youtu.be/vNO2keuzRVw)
