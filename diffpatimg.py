@@ -39,5 +39,3 @@ def create_circles_image(filename, xpositions, intensity, text):
     # Save the image
     image.save(filename)
     print(f"Image saved as {filename}")
-
-      
