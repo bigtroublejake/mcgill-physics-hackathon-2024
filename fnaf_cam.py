@@ -89,7 +89,8 @@ class diffpattmystery(pygame.sprite.Sprite):
         super().__init__() 
         self.image = pygame.image.load("diffimg/mysterywavelength.png")
 
-        
+        self.image.convert_alpha
+        self.image.set_alpha(90)
         self.rect = self.image.get_rect()
         self.rect.center = (SCREEN_WIDTH/2, SCREEN_HEIGHT/2)
         self.shown = False
@@ -105,13 +106,13 @@ class colordiff(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__() 
         self.image = pygame.image.load("diffimg/red.png")
-        self.image.convert_alpha
-        self.image.set_alpha(80)
         self.rect = self.image.get_rect()
         self.rect.center = (SCREEN_WIDTH/2, SCREEN_HEIGHT/2)
         self.shown = False
     def imgchange(self, color):
         self.image = pygame.image.load("diffimg/"+color+".png")
+        self.image.convert_alpha
+        self.image.set_alpha(80)
     def toggle(self):
         print("toggle color patterns")
         self.shown = not self.shown
