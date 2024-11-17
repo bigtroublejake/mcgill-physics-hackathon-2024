@@ -2,7 +2,7 @@ import os
 from PIL import Image, ImageDraw
 from PIL import ImageFont
 
-def create_circles_image(filename, xpositions, intensity, text):
+def create_circles_image(filename, xpositions, intensity, text, text_y):
     # Create a blank image with white background
     width, height = 800, 400   
     image = Image.new("RGB", (width, height), "white")
@@ -16,7 +16,6 @@ def create_circles_image(filename, xpositions, intensity, text):
     except IOError:
         font = ImageFont.load_default
     text_x = 10
-    text_y = 10
     draw.text((text_x, text_y), text, fill="black", font=font)
 
 

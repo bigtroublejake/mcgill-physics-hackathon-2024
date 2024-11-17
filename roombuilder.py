@@ -54,9 +54,9 @@ class roomBuidler:
         names=["diffimg/red.png","diffimg/orange.png","diffimg/yellow.png","diffimg/green.png","diffimg/blue.png","diffimg/indigo.png","diffimg/violet.png"]
         text=["red","orange","yellow","green","blue","indigo","violet"]
         for m in range(7):
-            diff.create_circles_image(names[m],eq.diffractionGrating(wavelenghtsbase[m]),eq.Intensity(wavelenghtsbase[m]), text[m])
+            diff.create_circles_image(names[m],eq.diffractionGrating(wavelenghtsbase[m]),eq.Intensity(wavelenghtsbase[m]), text[m], 20)
         wavelen = self.wavelengths[1]*10**-9
-        diff.create_circles_image("diffimg/mysterywavelength.png",eq.diffractionGrating(wavelen),eq.Intensity(wavelen),"Mystery Color")
+        diff.create_circles_image("diffimg/mysterywavelength.png",eq.diffractionGrating(wavelen),eq.Intensity(wavelen),"Mystery Color", 10)
 
         self.cbroomColorRGB = []
         match self.type:

@@ -3,7 +3,7 @@ from pygame.locals import *
 
 
 from parameters import *
-from fnaf_cam import Fnaf_cam, ballBoy, diffpattmystery
+from fnaf_cam import Fnaf_cam, ballBoy, diffpattmystery, colordiff
 from roombuilder import roomBuidler
 from room import Room
 from textbox import *
@@ -18,14 +18,17 @@ FramePerSec = pygame.time.Clock()
 DISPLAYSURF = pygame.display.set_mode((SCREEN_WIDTH,SCREEN_HEIGHT))
 pygame.display.set_caption("Game")
  
-lens = Fnaf_cam()
-lensLight = ballBoy()
-mysterydiff = diffpattmystery()
 
 # Create rooms 
 builder = roomBuidler()
 roomWidth = SCREEN_WIDTH
 roomHeight = 1200
+
+lens = Fnaf_cam()
+lensLight = ballBoy()
+mysterydiff = diffpattmystery()
+colorsdiff = colordiff()
+
 
 rooms = []
 for i in range(3):
@@ -33,6 +36,9 @@ for i in range(3):
 wall1=(SCREEN_WIDTH-roomWidth)/2
 wall2=SCREEN_WIDTH-(SCREEN_WIDTH-roomWidth)/2
 wallThick=10
+
+
+
 
 class Player(pygame.sprite.Sprite):
     def __init__(self):
@@ -46,6 +52,21 @@ class Player(pygame.sprite.Sprite):
         self.state = "room"
         # self.laserAngle = 90
 
+        self.laserAngle = 90
+        self.colorsname = ["red","orange","yellow","green","blue","indigo","violet"]
+        self.colorposition =0
+    def colorchange(self,key) -> str:
+        if key == K_RIGHT:
+            self.colorposition+=1
+            if self.colorposition == len(self.colorsname):
+                self.colorposition = 0
+            return self.colorsname[self.colorposition]
+        if key == K_LEFT:
+            self.colorposition-=1
+        if self.colorposition < 0:
+            self.colorposition = len(self.colorsname)-1
+        return self.colorsname[self.colorposition]
+    
     def update(self):
 
         #inWallx = (self.rect.centerx>wall1-wallThick and self.rect.centerx<wall1+wallThick) or (self.rect.centerx>wall2-wallThick and self.rect.centerx<wall2+wallThick)
@@ -85,8 +106,9 @@ class Player(pygame.sprite.Sprite):
                   self.rect.move_ip(5, 0)
         '''  
 
-    def state_toggle(self, popup):
-        self.shown = not self.shown
+    def state_toggle(self, popup, key):
+        if key != K_RIGHT and key != K_LEFT:
+            self.shown = not self.shown
 
         if popup == "lens":
             lens.toggle()
@@ -96,7 +118,15 @@ class Player(pygame.sprite.Sprite):
         if popup == "diffraction":
             if self.current_room == 2:
                 mysterydiff.toggle()
+                if colorsdiff.shown == True and mysterydiff.shown == False:
+                    colorsdiff.toggle()
             self.state = "diffraction" if self.state == "room" else "room"
+        if popup == "diffchange":
+            if mysterydiff.shown == True and self.current_room == 2:
+                colorsdiff.imgchange(self.colorchange(key))
+                if colorsdiff.shown == False:
+                    colorsdiff.toggle()
+            self.state = "diffchange" if self.state == "room" else "room"
 
 
             
@@ -118,10 +148,14 @@ while True:
         elif event.type == KEYDOWN: # Detect single key presses
                 
                 if event.key == K_f:
-                    P1.state_toggle("lens")
+                    P1.state_toggle("lens" , K_f)
                     # print("f was pressed")
-                if event.key == K_g:
-                    P1.state_toggle("diffraction")
+                if event.key == K_g and P1.current_room == 2:
+                    P1.state_toggle("diffraction", K_g)
+                if event.key == K_RIGHT:
+                    P1.state_toggle("diffchange", K_RIGHT)
+                if event.key == K_LEFT:
+                    P1.state_toggle("diffchange", K_LEFT)
 
 
     P1.update()
@@ -147,6 +181,7 @@ while True:
     lensLight.update()
     lens.draw(DISPLAYSURF)
     mysterydiff.draw(DISPLAYSURF)
+    colorsdiff.draw(DISPLAYSURF)
     if lens.shown==1:
         DISPLAYSURF.blit(SETTEXT(str(lensLight.blur_amount), WHITE), (SCREEN_WIDTH/2, SCREEN_HEIGHT-80))
         DISPLAYSURF.blit(LENSINSTRUCTIONS, LENSINSTRUCTIONSRECT)
