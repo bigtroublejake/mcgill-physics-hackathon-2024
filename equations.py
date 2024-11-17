@@ -43,3 +43,6 @@ def refractAngleGlass(index, initAngle) -> float:
 
 def diameter(angularResolution, waveLenght):
     return((1.22)*waveLenght/angularResolution)
+
+def wavelength(angle, diameter):
+    return (angle*diameter)/1.22

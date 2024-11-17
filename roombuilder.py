@@ -47,7 +47,7 @@ class roomBuidler:
                     self.wavelengths.append(np.random.randint(400,424))
             k+=1
 
-        self.angularResolution = np.round(eq.angularResolution(np.random.randint(10,20),self.wavelengths[0])*100,1)
+        self.angularResolution = np.round(eq.angularResolution(np.random.randint(10,20),self.wavelengths[0]),1)
         
 
         wavelenghtsbase = [660e-9,600e-9,575e-9,532e-9,472e-9,437e-9,412e-9]

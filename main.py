@@ -51,7 +51,8 @@ class Player(pygame.sprite.Sprite):
         self.current_room=0
         self.state = "room"
         # self.laserAngle = 90
-        self.diameter = equations.diameter(builder.angularResolution, builder.wavelengths[1])
+        self.diameter = equations.diameter(builder.angularResolution, builder.wavelengths[0])
+        self.angle = equations.angularResolution(self.diameter, builder.wavelengths[0])
 
         self.laserAngle = 90
         self.colorsname = ["red","orange","yellow","green","blue","indigo","violet"]
@@ -91,19 +92,22 @@ class Player(pygame.sprite.Sprite):
             self.current_room+=1
             print('Room#: ', self.current_room)
 
+        # ROOM 1 - LENS
         if self.state == 'lens':
-            if pressed_keys[K_t]:
+            if pressed_keys[K_t] and abs(lensLight.blur_amount)<60:
                 lensLight.blurAdd(1)
-                self.diameter+=1
-            if pressed_keys[K_y]:
+                self.angle+=1
+            if pressed_keys[K_y] and abs(lensLight.blur_amount)<60:
                 lensLight.blurAdd(-1)
-                self.diameter-=1
+                self.angle-=1
+        
+        # ROOM 2 - REFRACTION
         if self.state == "snell":
             if pressed_keys[K_o]:
                 self.laserAngle += 1
             elif pressed_keys[K_p]:
                 self.laserAngle -= 1
-            
+
 
         '''
         if self.rect.left > 0:
@@ -191,7 +195,8 @@ while True:
     mysterydiff.draw(DISPLAYSURF)
     colorsdiff.draw(DISPLAYSURF)
     if lens.shown==1:
-        DISPLAYSURF.blit(SETTEXT(str(P1.diameter), WHITE), (SCREEN_WIDTH/2, SCREEN_HEIGHT-80))
+        DISPLAYSURF.blit(SETTEXT('Angle of resolution = '+str(P1.angle), WHITE), (SCREEN_WIDTH/2-100, SCREEN_HEIGHT-80))
+        DISPLAYSURF.blit(SETTEXT('Measured wavelength = '+str(equations.wavelength(P1.angle, P1.diameter)), WHITE), (SCREEN_WIDTH/2-100, SCREEN_HEIGHT-60))
         DISPLAYSURF.blit(LENSINSTRUCTIONS, LENSINSTRUCTIONSRECT)
 
     snellLens.update()
