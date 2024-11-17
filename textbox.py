@@ -10,7 +10,7 @@ TEXT.append(my_font.render('Hello Spy, you must sneak through the facility by bl
 TEXT.append(my_font.render('However, you have a type of color blindness so figure out the color using gadgets', True, WHITE))
 TEXT.append(my_font.render('', True, WHITE))
 TEXT.append(my_font.render('Press F to bring up lens to observe an source and find its wavelength.', True, WHITE))
-TEXT.append(my_font.render('Press G to bring up a mystery diffraction gratting whcih you can compare', True, WHITE))
+TEXT.append(my_font.render('Press G to bring up a myster diffraction which you can compare to basic diffraction of colors', True, WHITE))
 TEXT.append(my_font.render('Press H to bring up refraction stuff', True, WHITE))
 
 TEXTLEVEL1=my_font.render('You see a light at the end of the room. Maybe you have something to focus on it.', True, WHITE)
