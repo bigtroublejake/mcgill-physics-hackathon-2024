@@ -11,14 +11,16 @@ TEXT.append(my_font.render('However, you have a type of color blindness so figur
 TEXT.append(my_font.render('', True, WHITE))
 TEXT.append(my_font.render('Press F to bring up lens to observe an source and find its wavelength.', True, WHITE))
 TEXT.append(my_font.render('Press G to bring up a myster diffraction which you can compare to basic diffraction of colors', True, WHITE))
-TEXT.append(my_font.render('Press H to bring up refraction stuff', True, WHITE))
+TEXT.append(my_font.render('Press H to bring up refraction stuff (doesn\'t work)', True, WHITE))
 TEXT.append(my_font.render('Press C to bring up a wavelength to colour chart', True, WHITE))
+TEXT.append(my_font.render('', True, WHITE))
+TEXT.append(my_font.render('NOTE: Once you leave a room you can\'t go back!', True, WHITE))
 
 TEXTLEVEL1=my_font.render('You see a light at the end of the room. Maybe you have something to focus on it.', True, WHITE)
 
 TEXTLEVEL2=my_font.render('Theres a diffraction grating, the light shines through it.', True, WHITE)
 
-TEXTLEVEL3=my_font.render('Theres pieces of glass.', True, WHITE)
+TEXTLEVEL3=my_font.render('There are pieces of glass refracting light.', True, WHITE)
 
 TEXTEND=[]
 TEXTEND.append(my_font.render('You made it to the end! With the information you have gathered you must determine', True, WHITE))
@@ -38,3 +40,6 @@ def SETTEXT(text, color):
 
 LENSINSTRUCTIONS = my_font.render('(Use T and Y to adjust the angular resolution of lens)', True, WHITE)
 LENSINSTRUCTIONSRECT = LENSINSTRUCTIONS.get_rect(center=(SCREEN_WIDTH/2, SCREEN_HEIGHT-25))
+
+DIFFINSTRUCTIONS = my_font.render('(Use arrow keys to cycle between diffraction patterns)', True, WHITE)
+DIFFINSTRUCTIONSRECT = LENSINSTRUCTIONS.get_rect(center=(SCREEN_WIDTH/2, SCREEN_HEIGHT-40))

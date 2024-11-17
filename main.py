@@ -203,11 +203,11 @@ while True:
         elif P1.current_room >0 and P1.current_room<=3:
             DISPLAYSURF.blit(LEVELS[P1.current_room-1],(10,10))
             if P1.current_room==1:
-                DISPLAYSURF.blit(TEXTLEVEL1, (100,500))
+                DISPLAYSURF.blit(TEXTLEVEL1, (100,700))
             if P1.current_room==2:
-                DISPLAYSURF.blit(TEXTLEVEL2, (100,500))
+                DISPLAYSURF.blit(TEXTLEVEL2, (100,700))
             if P1.current_room==3:
-                DISPLAYSURF.blit(TEXTLEVEL3, (100,500))
+                DISPLAYSURF.blit(TEXTLEVEL3, (100,700))
         elif P1.current_room==4:
             for i in range(len(TEXTEND)):
                 DISPLAYSURF.blit(TEXTEND[i], (100, 200+25*i))
@@ -224,6 +224,9 @@ while True:
         DISPLAYSURF.blit(SETTEXT('Angle of resolution = '+str(round(P1.angle,2))+' 10^-9 degrees', WHITE), (SCREEN_WIDTH/2-100, SCREEN_HEIGHT-80))
         DISPLAYSURF.blit(SETTEXT('Measured wavelength = '+str(round(equations.wavelength(P1.angle, P1.diameter),2))+' nm', WHITE), (SCREEN_WIDTH/2-100, SCREEN_HEIGHT-60))
         DISPLAYSURF.blit(LENSINSTRUCTIONS, LENSINSTRUCTIONSRECT)
+
+    if mysterydiff.shown==1:
+        DISPLAYSURF.blit(DIFFINSTRUCTIONS, DIFFINSTRUCTIONSRECT)
 
     # snellLens.update()
     # snellLens.draw(DISPLAYSURF)

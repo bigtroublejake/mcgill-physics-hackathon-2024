@@ -52,7 +52,7 @@ class roomBuidler:
 
         wavelenghtsbase = [660e-9,600e-9,575e-9,532e-9,472e-9,437e-9,412e-9]
         names=["diffimg/red.png","diffimg/orange.png","diffimg/yellow.png","diffimg/green.png","diffimg/blue.png","diffimg/indigo.png","diffimg/violet.png"]
-        text=["red","orange","yellow","green","blue","indigo","violet"]
+        text=["660 nm","600 nm","575 nm","532 nm","472 nm","437 nm","412 nm"]
         for m in range(7):
             diff.create_circles_image(names[m],eq.diffractionGrating(wavelenghtsbase[m]),eq.Intensity(wavelenghtsbase[m]), text[m], 20)
         wavelen = self.wavelengths[1]*10**-9
