@@ -57,7 +57,7 @@ class ballBoy(pygame.sprite.Sprite):
         size = self.original_image.get_size()
 
         if 0.6 < self.scale_amount + amount < 0.8:
-            self.scale_amount += amount / 700
+            self.scale_amount += amount / 100
             self.blurred_image = pygame.transform.scale_by(self.blurred_image, self.scale_amount)
 
 
@@ -87,4 +87,23 @@ class ballBoy(pygame.sprite.Sprite):
         
             # print(self.scale_amount)
             # print(self.blurred_image.get_rect())
+class diffpattmystery(pygame.sprite.Sprite):
+    def __init__(self):
+        super().__init__() 
+        self.image = pygame.image.load("diffimg/mysterywavelength.png")
+
+        
+        self.rect = self.image.get_rect()
+        self.rect.center = (SCREEN_WIDTH/2, SCREEN_HEIGHT/2)
+        self.shown = False
+        self.image.convert_alpha
+        self.image.set_alpha(50)
+
+
+    def toggle(self):
+        print("toggle mystery pattern")
+        self.shown = not self.shown
+    def draw(self, surface):
+        if (self.shown == 1):
+            surface.blit(self.image, self.rect)
 

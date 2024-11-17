@@ -3,7 +3,7 @@ from pygame.locals import *
 
 
 from parameters import *
-from fnaf_cam import Fnaf_cam, ballBoy
+from fnaf_cam import Fnaf_cam, ballBoy, diffpattmystery
 from roombuilder import roomBuidler
 from room import Room
 from textbox import *
@@ -19,6 +19,7 @@ pygame.display.set_caption("Game")
  
 lens = Fnaf_cam()
 lensLight = ballBoy()
+mysterydiff = diffpattmystery()
 
 # Create rooms 
 builder = roomBuidler()
@@ -88,8 +89,15 @@ class Player(pygame.sprite.Sprite):
 
         if popup == "lens":
             lens.toggle()
-            lensLight.toggle()
+            if self.current_room == 1:
+                lensLight.toggle()
             self.state = "lens" if self.state == "room" else "room"
+        if popup == "diffraction":
+            if self.current_room == 2:
+                mysterydiff.toggle()
+            self.state = "diffraction" if self.state == "room" else "room"
+
+
             
  
     def draw(self, surface):
@@ -110,6 +118,8 @@ while True:
                 if event.key == K_f:
                     P1.state_toggle("lens")
                     # print("f was pressed")
+                if event.key == K_g:
+                    P1.state_toggle("diffraction")
 
 
     P1.update()
@@ -134,6 +144,7 @@ while True:
     lensLight.draw(DISPLAYSURF)
     lensLight.update()
     lens.draw(DISPLAYSURF)
+    mysterydiff.draw(DISPLAYSURF)
     if lens.shown==1:
         DISPLAYSURF.blit(SETTEXT(str(lensLight.blur_amount), WHITE), (SCREEN_WIDTH/2, SCREEN_HEIGHT-80))
         DISPLAYSURF.blit(LENSINSTRUCTIONS, LENSINSTRUCTIONSRECT)
