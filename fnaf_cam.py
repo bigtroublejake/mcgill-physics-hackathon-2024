@@ -92,7 +92,7 @@ class diffpattmystery(pygame.sprite.Sprite):
         self.rect.center = (SCREEN_WIDTH/2, SCREEN_HEIGHT/2)
         self.shown = False
         self.image.convert_alpha
-        self.image.set_alpha(50)
+        self.image.set_alpha(30)
 
 
     def toggle(self):
