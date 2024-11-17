@@ -23,7 +23,7 @@ class Fnaf_cam(pygame.sprite.Sprite):
 class ballBoy(pygame.sprite.Sprite):
     def __init__(self):
         self.original_image = pygame.image.load("Sprites/BallLight.png")
-        self.scale_amount = 0.2
+        self.scale_amount = 0.7
         self.original_image = pygame.transform.scale_by(self.original_image, self.scale_amount)
 
         self.rect = self.original_image.get_rect()
@@ -32,7 +32,11 @@ class ballBoy(pygame.sprite.Sprite):
         self.shown = False
 
         # Create blurred image
+<<<<<<< Updated upstream
         self.blur_amount = 0  # Adjust this value to control blur amount
+=======
+        self.blur_amount = 30  # Adjust this value to control blur amount
+>>>>>>> Stashed changes
         
         size = self.original_image.get_size()
         smaller_img = self.original_image
@@ -63,7 +67,7 @@ class ballBoy(pygame.sprite.Sprite):
 
         if self.blur_amount == 0:
             self.blurred_image = self.original_image
-        elif abs(self.blur_amount) > 30:
+        elif abs(self.blur_amount) > 70:
             # cancels out whatever it tried to blur as
             self.blur_amount -= amount
         else:
@@ -78,9 +82,9 @@ class ballBoy(pygame.sprite.Sprite):
             pressed_keys = pygame.key.get_pressed()
 
             if pressed_keys[K_t]:
-                self.blurAdd(1)
+                self.blurAdd(2)
             if pressed_keys[K_y]:
-                self.blurAdd(-1)
+                self.blurAdd(-2)
         
             # print(self.scale_amount)
             # print(self.blurred_image.get_rect())
@@ -93,8 +97,6 @@ class diffpattmystery(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.center = (SCREEN_WIDTH/2, SCREEN_HEIGHT/2)
         self.shown = False
-        self.image.convert_alpha
-        self.image.set_alpha(50)
 
 
     def toggle(self):
@@ -103,4 +105,21 @@ class diffpattmystery(pygame.sprite.Sprite):
     def draw(self, surface):
         if (self.shown == 1):
             surface.blit(self.image, self.rect)
-
+class colordiff(pygame.sprite.Sprite):
+    def __init__(self):
+        super().__init__() 
+        self.image = pygame.image.load("diffimg/red.png")
+        self.image.convert_alpha
+        self.image.set_alpha(80)
+        self.rect = self.image.get_rect()
+        self.rect.center = (SCREEN_WIDTH/2, SCREEN_HEIGHT/2)
+        self.shown = False
+    def imgchange(self, color):
+        self.image = pygame.image.load("diffimg/"+color+".png")
+    def toggle(self):
+        print("toggle color patterns")
+        self.shown = not self.shown
+    def draw(self, surface):
+        if (self.shown == 1):
+            surface.blit(self.image, self.rect)
+        
