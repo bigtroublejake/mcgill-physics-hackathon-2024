@@ -136,3 +136,20 @@ class blankpattern(pygame.sprite.Sprite):
     def draw(self, surface):
         if (self.shown == 1):
             surface.blit(self.image, self.rect)
+
+class ColourChart(pygame.sprite.Sprite):
+    def __init__(self):
+        super().__init__() 
+        self.image = pygame.image.load("Sprites/Colour_chart.png")
+        
+        self.rect = self.image.get_rect()
+        self.rect.center = (SCREEN_WIDTH/2, SCREEN_HEIGHT/2)
+        self.shown = 0
+
+    def toggle(self):
+        print("toggle colour chart")
+        self.shown = not self.shown
+ 
+    def draw(self, surface):
+        if (self.shown == 1):
+            surface.blit(self.image, self.rect)

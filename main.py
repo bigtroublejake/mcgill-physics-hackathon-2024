@@ -3,7 +3,7 @@ from pygame.locals import *
 
 
 from parameters import *
-from fnaf_cam import Fnaf_cam, ballBoy, diffpattmystery, colordiff, blankpattern
+from fnaf_cam import Fnaf_cam, ballBoy, diffpattmystery, colordiff, blankpattern, ColourChart
 from roombuilder import roomBuidler
 from room import Room
 from textbox import *
@@ -29,7 +29,7 @@ lensLight = ballBoy()
 mysterydiff = diffpattmystery()
 colorsdiff = colordiff()
 blankdiff = blankpattern()
-
+chart = ColourChart()
 
 rooms = []
 for i in range(3):
@@ -150,6 +150,9 @@ class Player(pygame.sprite.Sprite):
                 if colorsdiff.shown == False:
                     colorsdiff.toggle()
             self.state = "diffchange" if self.state == "room" else "room"
+        if popup == "chart":
+            chart.toggle()
+            self.state = "chart" if self.state == "room" else "room"
 
 
             
@@ -179,6 +182,8 @@ while True:
                     P1.state_toggle("diffchange", K_RIGHT)
                 if event.key == K_LEFT:
                     P1.state_toggle("diffchange", K_LEFT)
+                if event.key == K_c:
+                    P1.state_toggle("chart", K_c)
 
 
     P1.update()
@@ -206,6 +211,8 @@ while True:
     mysterydiff.draw(DISPLAYSURF)
     colorsdiff.draw(DISPLAYSURF)
     blankdiff.draw(DISPLAYSURF)
+    chart.draw(DISPLAYSURF)
+
     if lens.shown==1:
         DISPLAYSURF.blit(SETTEXT('Angle of resolution = '+str(P1.angle)+' 10^-9 degrees', WHITE), (SCREEN_WIDTH/2-100, SCREEN_HEIGHT-80))
         DISPLAYSURF.blit(SETTEXT('Measured wavelength = '+str(equations.wavelength(P1.angle, P1.diameter))+' nm', WHITE), (SCREEN_WIDTH/2-100, SCREEN_HEIGHT-60))
