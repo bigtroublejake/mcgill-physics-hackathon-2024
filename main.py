@@ -105,7 +105,8 @@ class Player(pygame.sprite.Sprite):
         '''  
 
     def state_toggle(self, popup, key):
-        self.shown = not self.shown
+        if key != K_RIGHT and key != K_LEFT:
+            self.shown = not self.shown
 
         if popup == "lens":
             lens.toggle()
@@ -145,9 +146,9 @@ while True:
         elif event.type == KEYDOWN: # Detect single key presses
                 
                 if event.key == K_f:
-                    P1.state_toggle("lens")
+                    P1.state_toggle("lens" , K_f)
                     # print("f was pressed")
-                if event.key == K_g:
+                if event.key == K_g and P1.current_room == 2:
                     P1.state_toggle("diffraction", K_g)
                 if event.key == K_RIGHT:
                     P1.state_toggle("diffchange", K_RIGHT)
