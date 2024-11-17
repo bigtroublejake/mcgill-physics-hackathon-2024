@@ -18,15 +18,17 @@ FramePerSec = pygame.time.Clock()
 DISPLAYSURF = pygame.display.set_mode((SCREEN_WIDTH,SCREEN_HEIGHT))
 pygame.display.set_caption("Game")
  
-lens = Fnaf_cam()
-lensLight = ballBoy()
-mysterydiff = diffpattmystery()
-colorsdiff = colordiff()
 
 # Create rooms 
 builder = roomBuidler()
 roomWidth = SCREEN_WIDTH
 roomHeight = 1200
+
+lens = Fnaf_cam()
+lensLight = ballBoy()
+mysterydiff = diffpattmystery()
+colorsdiff = colordiff()
+
 
 rooms = []
 for i in range(3):
