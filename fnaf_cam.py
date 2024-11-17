@@ -23,7 +23,7 @@ class Fnaf_cam(pygame.sprite.Sprite):
 class ballBoy(pygame.sprite.Sprite):
     def __init__(self):
         self.original_image = pygame.image.load("Sprites/BallLight.png")
-        self.scale_amount = 0.7
+        self.scale_amount = 0.2
         self.original_image = pygame.transform.scale_by(self.original_image, self.scale_amount)
 
         self.rect = self.original_image.get_rect()
@@ -32,7 +32,7 @@ class ballBoy(pygame.sprite.Sprite):
         self.shown = False
 
         # Create blurred image
-        self.blur_amount = 30  # Adjust this value to control blur amount
+        self.blur_amount = 0  # Adjust this value to control blur amount
         
         size = self.original_image.get_size()
         smaller_img = self.original_image
@@ -88,11 +88,11 @@ class diffpattmystery(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__() 
         self.image = pygame.image.load("diffimg/mysterywavelength.png")
+
+        
         self.rect = self.image.get_rect()
         self.rect.center = (SCREEN_WIDTH/2, SCREEN_HEIGHT/2)
         self.shown = False
-        self.image.convert_alpha
-        self.image.set_alpha(90)
 
 
     def toggle(self):
@@ -105,15 +105,13 @@ class colordiff(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__() 
         self.image = pygame.image.load("diffimg/red.png")
+        self.image.convert_alpha
+        self.image.set_alpha(80)
         self.rect = self.image.get_rect()
         self.rect.center = (SCREEN_WIDTH/2, SCREEN_HEIGHT/2)
         self.shown = False
     def imgchange(self, color):
-        path = "diffimg/"+color+".png"
-        print(path)
-        self.image = pygame.image.load(path)
-        self.image.convert_alpha
-        self.image.set_alpha(90)
+        self.image = pygame.image.load("diffimg/"+color+".png")
     def toggle(self):
         print("toggle color patterns")
         self.shown = not self.shown
