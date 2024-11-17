@@ -8,6 +8,7 @@ from roombuilder import roomBuidler
 from room import Room
 from textbox import *
 import equations
+from fnaf_snell import *
 
 pygame.init()
  
@@ -19,6 +20,7 @@ pygame.display.set_caption("Game")
  
 lens = Fnaf_cam()
 lensLight = ballBoy()
+
 
 # Create rooms 
 builder = roomBuidler()
@@ -42,7 +44,7 @@ class Player(pygame.sprite.Sprite):
         self.shown = 1
         self.current_room=0
         self.state = "room"
-        self.laserAngle = 90
+        # self.laserAngle = 90
 
     def update(self):
 
@@ -97,7 +99,8 @@ class Player(pygame.sprite.Sprite):
             surface.blit(self.image, self.rect)  
 
 P1 = Player()
- 
+snellLens = snell_lens(builder.wavelengths[2])
+
 while True:     
     for event in pygame.event.get():              
         if event.type == QUIT:
@@ -134,9 +137,13 @@ while True:
     lensLight.draw(DISPLAYSURF)
     lensLight.update()
     lens.draw(DISPLAYSURF)
+    
     if lens.shown==1:
         DISPLAYSURF.blit(SETTEXT(str(lensLight.blur_amount), WHITE), (SCREEN_WIDTH/2, SCREEN_HEIGHT-80))
         DISPLAYSURF.blit(LENSINSTRUCTIONS, LENSINSTRUCTIONSRECT)
+
+    snellLens.update()
+    snellLens.draw(DISPLAYSURF)
 
 
     pygame.display.update()
